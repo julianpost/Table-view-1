@@ -15,7 +15,7 @@ class SampleDataCell: UITableViewCell {
     
     var sample: TargetWeightData! {
         didSet {
-            wetWt.text = String(sample.wetWt)
+            wetWt.text = String(sample.sampleName)
       
         }
     }

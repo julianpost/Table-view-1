@@ -8,13 +8,20 @@
 
 import UIKit
 
+protocol MyTableVCViewControllerDelegate {
+    func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData)
+}
+
 class MyTableVCTableViewController: UITableViewController {
     
-    var targetWeightData: TargetWeightData = TargetWeightData(wetWt: 10)
+    var delegate:MyTableVCViewControllerDelegate? = nil
+    
+    var targetWeightData: TargetWeightData = TargetWeightData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sampleNameField.text = targetWeightData.sampleName ?? ""
         wetField.text = String(targetWeightData.wetWt ?? 0)
         dryField.text = String(targetWeightData.dryWt ?? 0)
         moistureLbl.text = String(targetWeightData.moistureContent ?? 0) + "%"
@@ -24,29 +31,48 @@ class MyTableVCTableViewController: UITableViewController {
         targetMoistureField.text = String(targetWeightData.targetMoisture ?? 0)
         targetWtLbl.text = String(targetWeightData.targetWt ?? 0)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
+
+    @IBAction func saveSample(sender: UIBarButtonItem) {
+        
+        if (delegate != nil) {
+            delegate!.myVCDidFinish(self, sample: targetWeightData)
+        }
+     
+    }
+ 
     
     
-
-
-
-
     
 
-
+    
+    @IBOutlet weak var sampleNameField: UITextField!
+    
+    @IBOutlet weak var wetField: UITextField!
+    
+    @IBOutlet weak var dryField: UITextField!
+    
+    @IBOutlet weak var moistureLbl: UILabel!
+    
+    @IBOutlet weak var targetMoistureField: UITextField!
+    
+    @IBOutlet weak var emptyBagField: UITextField!
+    
+    @IBOutlet weak var fullBagField: UITextField!
+    
+    @IBOutlet weak var targetWtLbl: UILabel!
+    
+    
+    @IBAction func updateOnFieldChange(sender: UITextField) {
+        updateCalculations()
+    }
     
     func updateCalculations() {
         let wetWt:Double = Double(wetField.text ?? "0") ?? 0
@@ -73,29 +99,15 @@ class MyTableVCTableViewController: UITableViewController {
             targetWtLbl.text = String(targetWtRounded)
         }
         
+        targetWeightData.sampleName = sampleNameField.text
+        targetWeightData.wetWt = Double(wetField.text ?? "0")
+        targetWeightData.dryWt = Double(dryField.text ?? "0")
+        targetWeightData.moistureContent = Double(moistureLbl.text ?? "0")
+        targetWeightData.targetMoisture = Double(targetMoistureField.text ?? "0")
+        targetWeightData.emptyBag = Double(emptyBagField.text ?? "0")
+        targetWeightData.fullBag = Double(fullBagField.text ?? "0")
+        targetWeightData.targetWt = Double(targetWtLbl.text ?? "0")
         
-    }
-    
-    
-    
-    
-    @IBOutlet weak var moistureLbl: UILabel!
-    
-    @IBOutlet weak var targetWtLbl: UILabel!
-    
-    @IBOutlet weak var wetField: UITextField!
-    
-    @IBOutlet weak var dryField: UITextField!
-    
-    @IBOutlet weak var targetMoistureField: UITextField!
-    
-    @IBOutlet weak var emptyBagField: UITextField!
-    
-    @IBOutlet weak var fullBagField: UITextField!
-    
-    
-    @IBAction func updateOnFieldChange(sender: UITextField) {
-        updateCalculations()
     }
 
 }

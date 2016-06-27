@@ -10,6 +10,7 @@ import UIKit
 
 
 struct TargetWeightData {
+    var sampleName: String?
     var wetWt: Double?
     var dryWt: Double?
     var moistureContent: Double?
@@ -18,7 +19,8 @@ struct TargetWeightData {
     var fullBag: Double?
     var targetWt: Double?
     
-    init(wetWt: Double? = nil, dryWt: Double? = nil, moistureContent: Double? = nil, targetMoisture: Double? = nil, emptyBag: Double? = nil, fullBag: Double? = nil, targetWt: Double? = nil) {
+    init(sampleName: String? = nil, wetWt: Double? = nil, dryWt: Double? = nil, moistureContent: Double? = nil, targetMoisture: Double? = nil, emptyBag: Double? = nil, fullBag: Double? = nil, targetWt: Double? = nil) {
+        self.sampleName = sampleName
         self.wetWt = wetWt
         self.dryWt = dryWt
         self.moistureContent = moistureContent

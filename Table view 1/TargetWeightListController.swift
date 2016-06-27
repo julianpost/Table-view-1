@@ -8,16 +8,33 @@
 
 import UIKit
 
-class TargetWeightListController: UITableViewController {
+class TargetWeightListController: UITableViewController, MyTableVCViewControllerDelegate {
     
     var samples:[TargetWeightData] = samplesData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
-       
+        samples = samplesData
     }
+    
+    func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData) {
+        
+        samplesData.append(sample)
+        samples = samplesData
+        testLabel.text = "changed"
+        
+        controller.navigationController?.popViewControllerAnimated(true)
+        }
+    
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+            if segue.identifier == "mySegue" {
+                let vc = segue.destinationViewController as! MyTableVCTableViewController
+                //vc.colorString = colorLabel.text!
+                vc.delegate = self
+            }
+        }
+    
+    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -38,15 +55,16 @@ class TargetWeightListController: UITableViewController {
     }
 
     
-    @IBAction func saveSample(segue: UIStoryboardSegue){
+   /* @IBAction func saveSample(segue: UIStoryboardSegue){
         print("Hello")
     }
-    
+    */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
 }
 
-// MARK: - Table view data sour
+    @IBOutlet weak var testLabel: UILabel!
+
 }

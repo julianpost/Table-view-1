@@ -71,10 +71,10 @@
 		E8DD3A5B1D1A1738007CEDA6 /* Table view 1 */ = {
 			isa = PBXGroup;
 			children = (
-				E8DD3A6E1D1A17B8007CEDA6 /* MyTableVCTableViewController.swift */,
 				E8DD3A5C1D1A1738007CEDA6 /* AppDelegate.swift */,
 				E8DD3A601D1A1738007CEDA6 /* Main.storyboard */,
 				E80ABD661D1CA730003C55B2 /* TargetWeightListController.swift */,
+				E8DD3A6E1D1A17B8007CEDA6 /* MyTableVCTableViewController.swift */,
 				E80ABD6A1D1CADFE003C55B2 /* SampleDataCell.swift */,
 				E80ABD631D1C8E4D003C55B2 /* Model */,
 				E8DD3A631D1A1738007CEDA6 /* Assets.xcassets */,
