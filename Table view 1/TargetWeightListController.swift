@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class TargetWeightListController: UITableViewController, MyTableVCViewControllerDelegate {
+    
+    
     
     var samples:[TargetWeightData] = samplesData
     
@@ -24,7 +27,36 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
         testLabel.text = "changed"
         
         controller.navigationController?.popViewControllerAnimated(true)
-        }
+        
+        
+    
+      /*  let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+        let managedContext = appDelegate.managedObjectContext
+    
+        let entity = NSEntityDescription.entityForName("ListEntity", inManagedObjectContext: managedContext)
+    
+        let item = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        item.setValue(itemToSave, forKey: "item")
+        
+            do {
+        
+            try.managedContext.save()
+            
+            samplesData.append(sample)
+            
+        
+                }
+        
+            catch {
+                print("error")
+                
+                }
+        
+        
+ */
+    }
     
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
             if segue.identifier == "mySegue" {

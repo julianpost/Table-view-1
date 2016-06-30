@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 protocol MyTableVCViewControllerDelegate {
     func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData)
 }
 
 class MyTableVCTableViewController: UITableViewController {
+    
+   let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var delegate:MyTableVCViewControllerDelegate? = nil
     
@@ -42,6 +45,43 @@ class MyTableVCTableViewController: UITableViewController {
 
     @IBAction func saveSample(sender: UIBarButtonItem) {
         
+      //  samplesData.append(targetWeightData)
+        
+        let entityDescription =
+            NSEntityDescription.entityForName("ListEntity",
+                                              inManagedObjectContext: managedObjectContext!)
+        
+        let sample = ListEntity(entity: entityDescription!,
+                               insertIntoManagedObjectContext: managedObjectContext)
+        
+        
+        ListEntity.sampleName = sampleNameField.text
+        ListEntity.wetWt = Double(wetField.text ?? "0")
+        ListEntity.dryWt = Double(dryField.text ?? "0")
+        ListEntity.moistureContent = Double(moistureLbl.text ?? "0")
+        ListEntity.targetMoisture = Double(targetMoistureField.text ?? "0")
+        ListEntity.emptyBag = Double(emptyBagField.text ?? "0")
+        ListEntity.fullBag = Double(fullBagField.text ?? "0")
+        ListEntity.targetWt = Double(targetWtLbl.text ?? "0")
+        
+        var error: NSError?
+        
+        managedObjectContext?.save(&error)
+        
+        if let err = error {
+            status.text = err.localizedFailureReason
+        } else {
+            sampleNameField.text = nil
+            wetField.text = nil
+            dryField.text = nil
+            moistureLbl.text = nil
+            
+            emptyBagField.text = nil
+            fullBagField.text = nil
+            targetMoistureField.text = nil
+            targetWtLbl.text = nil
+        }
+        
         if (delegate != nil) {
             delegate!.myVCDidFinish(self, sample: targetWeightData)
         }
@@ -52,6 +92,7 @@ class MyTableVCTableViewController: UITableViewController {
     
     
 
+    @IBOutlet weak var status: UILabel!
     
     @IBOutlet weak var sampleNameField: UITextField!
     
