@@ -67,3 +67,7 @@ fastlane/test_output
 *.xcuserstate
 
 Table view 1.xcodeproj/project.xcworkspace/xcuserdata/jpost.xcuserdatad/UserInterfaceState.xcuserstate
+
+*.xcuserstate
+
+*.swp
