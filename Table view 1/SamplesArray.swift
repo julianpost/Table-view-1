@@ -8,8 +8,8 @@
 
 import Foundation
 
-let samplesData = [
-    TargetWeightData(wetWt: 10.0),
+var samplesData = [
+    TargetWeightData(sampleName: "Cascade 6/18"),
     TargetWeightData(dryWt: 8.1),
     TargetWeightData(),
     TargetWeightData(),
