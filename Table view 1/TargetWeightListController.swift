@@ -11,6 +11,8 @@ import CoreData
 
 class TargetWeightListController: UITableViewController, MyTableVCViewControllerDelegate {
     
+    var managedObjectContext: NSManagedObjectContext!
+
     
     
     var samples:[TargetWeightData] = samplesData
