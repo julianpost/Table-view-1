@@ -20,6 +20,10 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         samples = samplesData
+        
+        
+        // Seed Persistent Store
+        seedPersistentStore()
     }
     
     func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData) {
@@ -100,5 +104,33 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
 }
 
     @IBOutlet weak var testLabel: UILabel!
+    
+    
+    
+    // MARK: -
+    // MARK: Helper Methods
+    private func seedPersistentStore() {
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName("Sample", inManagedObjectContext: managedObjectContext)
+        
+        for i in 0...15 {
+            // Initialize Record
+            let record = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: self.managedObjectContext)
+            
+            // Populate Record
+            record.setValue(i * 3, forKey: "wetWt")
+            record.setValue(NSDate(), forKey: "createdAt")
+            record.setValue("Sample \(i + 1)", forKey: "name")
+        }
+        
+        do {
+            // Save Record
+            try managedObjectContext?.save()
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+    }
 
 }
