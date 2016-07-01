@@ -15,7 +15,8 @@ protocol MyTableVCViewControllerDelegate {
 
 class MyTableVCTableViewController: UITableViewController {
     
-   
+    var managedObjectContext: NSManagedObjectContext!
+
     
     var delegate:MyTableVCViewControllerDelegate? = nil
     
@@ -47,9 +48,57 @@ class MyTableVCTableViewController: UITableViewController {
         
       //  samplesData.append(targetWeightData)
         
-               
-     
-        
+        let name = sampleNameField.text
+
+        if let isEmpty = name?.isEmpty where isEmpty == false {
+            // Create Entity
+            let entity = NSEntityDescription.entityForName("Sample", inManagedObjectContext: self.managedObjectContext)
+
+            // Initialize Record
+            let record = Sample(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
+            
+            record.setValue(name, forKey: "name")
+            record.setValue(NSDate(), forKey: "createdAt")
+
+            do {
+                // Save Record
+                try record.managedObjectContext?.save()
+                
+            } catch {
+                let saveError = error as NSError
+                print("\(saveError), \(saveError.userInfo)")
+                
+                // Show Alert View
+                showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
+            }
+            
+        }
+
+        /*
+        if let isEmpty = name?.isEmpty where isEmpty == false {
+            // Update Record
+            record.setValue(name, forKey: "name")
+            
+            do {
+                // Save Record
+                try record.managedObjectContext?.save()
+                
+                // Dismiss View Controller
+                navigationController?.popViewControllerAnimated(true)
+                
+            } catch {
+                let saveError = error as NSError
+                print("\(saveError), \(saveError.userInfo)")
+                
+                // Show Alert View
+                showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
+            }
+            
+        } else {
+            // Show Alert View
+            showAlertWithTitle("Warning", message: "Your to-do needs a name.", cancelButtonTitle: "OK")
+        }
+         */
         
         
         
@@ -57,6 +106,22 @@ class MyTableVCTableViewController: UITableViewController {
             delegate!.myVCDidFinish(self, sample: targetWeightData)
         }
      
+    }
+    
+    
+    
+    
+    // MARK: -
+    // MARK: Helper Methods
+    private func showAlertWithTitle(title: String, message: String, cancelButtonTitle: String) {
+        // Initialize Alert Controller
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        // Configure Alert Controller
+        alertController.addAction(UIAlertAction(title: cancelButtonTitle, style: .Default, handler: nil))
+        
+        // Present Alert Controller
+        presentViewController(alertController, animated: true, completion: nil)
     }
  
     

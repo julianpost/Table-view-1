@@ -92,6 +92,11 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
                 let vc = segue.destinationViewController as! MyTableVCTableViewController
                 //vc.colorString = colorLabel.text!
                 vc.delegate = self
+                
+                if let viewController = segue.destinationViewController as? MyTableVCTableViewController {
+                    viewController.managedObjectContext = managedObjectContext
+                }
+
             }
         }
     
@@ -133,8 +138,56 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
         cell.sample = record as! Sample
     }
     
-    /*
     
+    
+    // MARK: -
+    // MARK: Table View Delegate Methods
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    // MARK: -
+    // MARK: Fetched Results Controller Delegate Methods
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch (type) {
+        case .Insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Delete:
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Update:
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! SampleDataCell
+                configureCell(cell, atIndexPath: indexPath)
+            }
+            break;
+        case .Move:
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+        }
+    }
+
+    /*
+ 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("TargetDataCell", forIndexPath: indexPath)
