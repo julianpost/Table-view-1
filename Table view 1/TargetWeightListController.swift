@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TargetWeightListController: UITableViewController, MyTableVCViewControllerDelegate {
+class TargetWeightListController: UITableViewController, MyTableVCViewControllerDelegate, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext!
 
@@ -17,10 +17,33 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
     
     var samples:[TargetWeightData] = samplesData
     
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: "Sample")
+        
+        // Add Sort Descriptors
+        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Initialize Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         samples = samplesData
         
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+        }
         
         // Seed Persistent Store
         seedPersistentStore()
@@ -75,12 +98,42 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
     
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        
+        return 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return samples.count
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        
+        return 0
+
     }
+
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TargetDataCell", forIndexPath: indexPath) as! SampleDataCell
+        
+        // Configure Table View Cell
+        configureCell(cell, atIndexPath: indexPath)
+        
+        return cell
+    }
+    
+    func configureCell(cell: SampleDataCell, atIndexPath indexPath: NSIndexPath) {
+        // Fetch Record
+        let record = fetchedResultsController.objectAtIndexPath(indexPath)
+        
+        // Update Cell
+        cell.sample = record as! Sample
+    }
+    
+    /*
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
@@ -91,7 +144,7 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
             cell.sample = sample
             return cell
     }
-
+*/
     
    /* @IBAction func saveSample(segue: UIStoryboardSegue){
         print("Hello")
