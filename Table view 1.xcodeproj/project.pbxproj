@@ -11,6 +11,10 @@
 		E80ABD671D1CA730003C55B2 /* TargetWeightListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ABD661D1CA730003C55B2 /* TargetWeightListController.swift */; };
 		E80ABD691D1CA89C003C55B2 /* SamplesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ABD681D1CA89C003C55B2 /* SamplesArray.swift */; };
 		E80ABD6B1D1CADFE003C55B2 /* SampleDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ABD6A1D1CADFE003C55B2 /* SampleDataCell.swift */; };
+		E812BD181D25FE2A00ED5CF3 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812BD171D25FE2A00ED5CF3 /* Sample.swift */; };
+		E818D2611D241B72009867AF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E818D25F1D241B72009867AF /* Model.xcdatamodeld */; };
+		E859A86C1D297A7600D3778A /* Sample+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859A86B1D297A7600D3778A /* Sample+CoreDataProperties.swift */; };
+		E859A86E1D29871900D3778A /* UpdateMyTableVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859A86D1D29871900D3778A /* UpdateMyTableVCTableViewController.swift */; };
 		E8DD3A5D1D1A1738007CEDA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD3A5C1D1A1738007CEDA6 /* AppDelegate.swift */; };
 		E8DD3A621D1A1738007CEDA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8DD3A601D1A1738007CEDA6 /* Main.storyboard */; };
 		E8DD3A641D1A1738007CEDA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8DD3A631D1A1738007CEDA6 /* Assets.xcassets */; };
@@ -23,6 +27,10 @@
 		E80ABD661D1CA730003C55B2 /* TargetWeightListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetWeightListController.swift; sourceTree = "<group>"; };
 		E80ABD681D1CA89C003C55B2 /* SamplesArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamplesArray.swift; sourceTree = "<group>"; };
 		E80ABD6A1D1CADFE003C55B2 /* SampleDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDataCell.swift; sourceTree = "<group>"; };
+		E812BD171D25FE2A00ED5CF3 /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
+		E818D2601D241B72009867AF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E859A86B1D297A7600D3778A /* Sample+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sample+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E859A86D1D29871900D3778A /* UpdateMyTableVCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMyTableVCTableViewController.swift; sourceTree = "<group>"; };
 		E8DD3A591D1A1738007CEDA6 /* Table view 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Table view 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8DD3A5C1D1A1738007CEDA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8DD3A611D1A1738007CEDA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,8 +81,12 @@
 			children = (
 				E8DD3A5C1D1A1738007CEDA6 /* AppDelegate.swift */,
 				E8DD3A601D1A1738007CEDA6 /* Main.storyboard */,
+				E818D25F1D241B72009867AF /* Model.xcdatamodeld */,
+				E859A86B1D297A7600D3778A /* Sample+CoreDataProperties.swift */,
+				E812BD171D25FE2A00ED5CF3 /* Sample.swift */,
 				E80ABD661D1CA730003C55B2 /* TargetWeightListController.swift */,
 				E8DD3A6E1D1A17B8007CEDA6 /* MyTableVCTableViewController.swift */,
+				E859A86D1D29871900D3778A /* UpdateMyTableVCTableViewController.swift */,
 				E80ABD6A1D1CADFE003C55B2 /* SampleDataCell.swift */,
 				E80ABD631D1C8E4D003C55B2 /* Model */,
 				E8DD3A631D1A1738007CEDA6 /* Assets.xcassets */,
@@ -157,10 +169,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E80ABD671D1CA730003C55B2 /* TargetWeightListController.swift in Sources */,
+				E859A86C1D297A7600D3778A /* Sample+CoreDataProperties.swift in Sources */,
 				E8DD3A5D1D1A1738007CEDA6 /* AppDelegate.swift in Sources */,
 				E8DD3A6F1D1A17B8007CEDA6 /* MyTableVCTableViewController.swift in Sources */,
+				E818D2611D241B72009867AF /* Model.xcdatamodeld in Sources */,
+				E812BD181D25FE2A00ED5CF3 /* Sample.swift in Sources */,
 				E80ABD6B1D1CADFE003C55B2 /* SampleDataCell.swift in Sources */,
 				E80ABD691D1CA89C003C55B2 /* SamplesArray.swift in Sources */,
+				E859A86E1D29871900D3778A /* UpdateMyTableVCTableViewController.swift in Sources */,
 				E80ABD621D1C8DFE003C55B2 /* TargetWeightData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +336,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E818D25F1D241B72009867AF /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E818D2601D241B72009867AF /* Model.xcdatamodel */,
+			);
+			currentVersion = E818D2601D241B72009867AF /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E8DD3A511D1A1738007CEDA6 /* Project object */;
 }
