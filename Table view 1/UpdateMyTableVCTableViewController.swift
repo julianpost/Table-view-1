@@ -9,35 +9,34 @@
 import UIKit
 import CoreData
 
-protocol MyTableVCViewControllerDelegate {
-    func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData)
+protocol UpdateViewControllerDelegate {
+    func myVCDidFinish(controller: UpdateViewController, sample: TargetWeightData)
 }
 
-class MyTableVCTableViewController: UITableViewController {
+class UpdateViewController: UITableViewController {
     
     var managedObjectContext: NSManagedObjectContext!
+    var name: NSManagedObject!
+    var record: Sample!
     
-
-    
-    var delegate:MyTableVCViewControllerDelegate? = nil
+    var delegate:UpdateViewControllerDelegate? = nil
     
     var targetWeightData: TargetWeightData = TargetWeightData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       /* sampleNameField.text = targetWeightData.sampleName ?? ""
-        wetField.text = String(targetWeightData.wetWt ?? 0)
-        dryField.text = String(targetWeightData.dryWt ?? 0)
-        moistureLbl.text = String(targetWeightData.moistureContent ?? 0) + "%"
+           
         
-        emptyBagField.text = String(targetWeightData.emptyBag ?? 0)
-        fullBagField.text = String(targetWeightData.fullBag ?? 0)
-        targetMoistureField.text = String(targetWeightData.targetMoisture ?? 0)
-        targetWtLbl.text = String(targetWeightData.targetWt ?? 0)
- */
+            sampleNameField.text = record?.name
         
-}
+                
+            
+        }
+        
+        
+        
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,18 +52,15 @@ class MyTableVCTableViewController: UITableViewController {
         let name = sampleNameField.text
 
         if let isEmpty = name?.isEmpty where isEmpty == false {
-            // Create Entity
-            let entity = NSEntityDescription.entityForName("Sample", inManagedObjectContext: self.managedObjectContext)
-
-            // Initialize Record
-            let record = Sample(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
-            
+            // Update Record
             record.setValue(name, forKey: "name")
-            record.setValue(NSDate(), forKey: "createdAt")
-
+            
             do {
                 // Save Record
                 try record.managedObjectContext?.save()
+                
+                // Dismiss View Controller
+                navigationController?.popViewControllerAnimated(true)
                 
             } catch {
                 let saveError = error as NSError
@@ -74,7 +70,11 @@ class MyTableVCTableViewController: UITableViewController {
                 showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
             }
             
+        } else {
+            // Show Alert View
+            showAlertWithTitle("Warning", message: "Your to-do needs a name.", cancelButtonTitle: "OK")
         }
+        
 
         /*
         if let isEmpty = name?.isEmpty where isEmpty == false {
@@ -178,14 +178,6 @@ class MyTableVCTableViewController: UITableViewController {
             targetWtLbl.text = String(targetWtRounded)
         }
         
-        targetWeightData.sampleName = sampleNameField.text
-        targetWeightData.wetWt = Double(wetField.text ?? "0")
-        targetWeightData.dryWt = Double(dryField.text ?? "0")
-        targetWeightData.moistureContent = Double(moistureLbl.text ?? "0")
-        targetWeightData.targetMoisture = Double(targetMoistureField.text ?? "0")
-        targetWeightData.emptyBag = Double(emptyBagField.text ?? "0")
-        targetWeightData.fullBag = Double(fullBagField.text ?? "0")
-        targetWeightData.targetWt = Double(targetWtLbl.text ?? "0")
         
     }
 
