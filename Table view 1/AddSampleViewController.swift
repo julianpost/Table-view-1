@@ -9,33 +9,21 @@
 import UIKit
 import CoreData
 
-// protocol MyTableVCViewControllerDelegate {
- //   func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData)
-//}
 
-class MyTableVCTableViewController: UITableViewController {
+
+class AddSampleViewController: UITableViewController {
     
    // var managedObjectContext: NSManagedObjectContext!
     
     var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-  //  var delegate:MyTableVCViewControllerDelegate? = nil
+ 
     
     var targetWeightData: TargetWeightData = TargetWeightData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       /* sampleNameField.text = targetWeightData.sampleName ?? ""
-        wetField.text = String(targetWeightData.wetWt ?? 0)
-        dryField.text = String(targetWeightData.dryWt ?? 0)
-        moistureLbl.text = String(targetWeightData.moistureContent ?? 0) + "%"
-        
-        emptyBagField.text = String(targetWeightData.emptyBag ?? 0)
-        fullBagField.text = String(targetWeightData.fullBag ?? 0)
-        targetMoistureField.text = String(targetWeightData.targetMoisture ?? 0)
-        targetWtLbl.text = String(targetWeightData.targetWt ?? 0)
- */
         
 }
 
@@ -48,7 +36,7 @@ class MyTableVCTableViewController: UITableViewController {
 
     @IBAction func saveSample(sender: UIBarButtonItem) {
         
-             //  samplesData.append(targetWeightData)
+        
         
         let name = sampleNameField.text
         let dryWt = Double(dryField.text ?? "0") ?? 0
@@ -127,9 +115,7 @@ class MyTableVCTableViewController: UITableViewController {
         
         
         
-     //   if (delegate != nil) {
-     //       delegate!.myVCDidFinish(self, sample: targetWeightData)
-     //   }
+   
      
     }
     

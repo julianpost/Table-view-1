@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--My TableVC Table View Controller-->
+        <!--Add Sample View Controller-->
         <scene sceneID="5C0-OT-qCW">
             <objects>
-                <tableViewController id="sIO-hK-u9o" customClass="MyTableVCTableViewController" customModule="Table_view_1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sIO-hK-u9o" customClass="AddSampleViewController" customModule="Table_view_1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="idh-7v-acJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -525,10 +525,10 @@
             </objects>
             <point key="canvasLocation" x="2757" y="-7"/>
         </scene>
-        <!--Target Weight List Controller-->
+        <!--Sample List Controller-->
         <scene sceneID="x6E-CY-5TJ">
             <objects>
-                <tableViewController id="Ug0-y7-E1A" customClass="TargetWeightListController" customModule="Table_view_1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ug0-y7-E1A" customClass="SampleListController" customModule="Table_view_1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nxx-Vg-drp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -600,10 +600,10 @@
             </objects>
             <point key="canvasLocation" x="1337" y="-7"/>
         </scene>
-        <!--Update View Controller-->
+        <!--Update Sample View Controller-->
         <scene sceneID="Ru4-oj-tFe">
             <objects>
-                <tableViewController id="HDn-RU-rfC" customClass="UpdateViewController" customModule="Table_view_1" sceneMemberID="viewController">
+                <tableViewController id="HDn-RU-rfC" customClass="UpdateSampleViewController" customModule="Table_view_1" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="3LA-Gl-qn5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootNavigationController = mainStoryboard.instantiateViewControllerWithIdentifier("StoryboardIDRootNavigationController") as! UINavigationController
         
         // Configure View Controller
-        let viewController = rootNavigationController.topViewController as? TargetWeightListController
+        let viewController = rootNavigationController.topViewController as? SampleListController
         
         if let viewController = viewController {
             viewController.managedObjectContext = self.managedObjectContext

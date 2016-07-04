@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TargetWeightListController: UITableViewController, MyTableVCViewControllerDelegate, NSFetchedResultsControllerDelegate {
+class SampleListController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext!
 
@@ -49,7 +49,7 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
         seedPersistentStore()
     }
     
-    func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData) {
+    func myVCDidFinish(controller: AddSampleViewController, sample: TargetWeightData) {
         
         samplesData.append(sample)
         samples = samplesData
@@ -91,7 +91,7 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
             if segue.identifier == "MySegue" {
                 
                     
-              if let viewController = segue.destinationViewController as? MyTableVCTableViewController {
+              if let viewController = segue.destinationViewController as? AddSampleViewController {
                     
                         viewController.managedObjectContext = managedObjectContext
                 }
@@ -100,7 +100,7 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
             }
             
             else if segue.identifier == "SegueUpdateViewController" {
-                if let viewController = segue.destinationViewController as? UpdateViewController {
+                if let viewController = segue.destinationViewController as? UpdateSampleViewController {
                     if let indexPath = tableView.indexPathForSelectedRow {
                         // Fetch Record
                         let record = fetchedResultsController.objectAtIndexPath(indexPath) as! Sample

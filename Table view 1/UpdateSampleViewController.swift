@@ -9,17 +9,15 @@
 import UIKit
 import CoreData
 
-/* protocol UpdateViewControllerDelegate {
-    func myVCDidFinish(controller: UpdateViewController, sample: TargetWeightData)
-} */
 
-class UpdateViewController: UITableViewController {
+
+class UpdateSampleViewController: UITableViewController {
     
     var managedObjectContext: NSManagedObjectContext!
     var name: NSManagedObject!
     var record: Sample!
     
-  //  var delegate:UpdateViewControllerDelegate? = nil
+  
     
     var targetWeightData: TargetWeightData = TargetWeightData()
     
