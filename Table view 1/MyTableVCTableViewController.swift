@@ -9,17 +9,17 @@
 import UIKit
 import CoreData
 
-protocol MyTableVCViewControllerDelegate {
-    func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData)
-}
+// protocol MyTableVCViewControllerDelegate {
+ //   func myVCDidFinish(controller: MyTableVCTableViewController, sample: TargetWeightData)
+//}
 
 class MyTableVCTableViewController: UITableViewController {
     
-    var managedObjectContext: NSManagedObjectContext!
+   // var managedObjectContext: NSManagedObjectContext!
     
-
+    var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var delegate:MyTableVCViewControllerDelegate? = nil
+  //  var delegate:MyTableVCViewControllerDelegate? = nil
     
     var targetWeightData: TargetWeightData = TargetWeightData()
     
@@ -48,9 +48,16 @@ class MyTableVCTableViewController: UITableViewController {
 
     @IBAction func saveSample(sender: UIBarButtonItem) {
         
-      //  samplesData.append(targetWeightData)
+             //  samplesData.append(targetWeightData)
         
         let name = sampleNameField.text
+        let dryWt = Double(dryField.text ?? "0") ?? 0
+        let emptyBag = Double(emptyBagField.text ?? "0") ?? 0
+        let fullBag = Double(fullBagField.text ?? "0") ?? 0
+        let moistureContent = Double(moistureLbl.text ?? "0") ?? 0
+        let targetMoisture = Double(targetMoistureField.text ?? "0") ?? 0
+        let targetWt = Double(targetWtLbl.text ?? "0") ?? 0
+        let wetWt = Double(wetField.text ?? "0") ?? 0
 
         if let isEmpty = name?.isEmpty where isEmpty == false {
             // Create Entity
@@ -59,14 +66,30 @@ class MyTableVCTableViewController: UITableViewController {
             // Initialize Record
             let record = Sample(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
             
-            record.setValue(name, forKey: "name")
-            record.setValue(NSDate(), forKey: "createdAt")
+            // Populate Record
+            record.name = name ?? ""
+            record.dryWt = dryWt
+            record.emptyBag = emptyBag
+            record.fullBag = fullBag
+            record.moistureContent = moistureContent
+            record.targetMoisture = targetMoisture
+            record.targetWt = targetWt
+            record.wetWt = wetWt
+            record.createdAt = NSDate().timeIntervalSince1970
+            
+            
 
             do {
                 // Save Record
                 try record.managedObjectContext?.save()
                 
-            } catch {
+                // Dismiss View Controller
+                dismissViewControllerAnimated(true, completion: nil)
+                
+          
+                }
+            
+            catch {
                 let saveError = error as NSError
                 print("\(saveError), \(saveError.userInfo)")
                 
@@ -104,9 +127,9 @@ class MyTableVCTableViewController: UITableViewController {
         
         
         
-        if (delegate != nil) {
-            delegate!.myVCDidFinish(self, sample: targetWeightData)
-        }
+     //   if (delegate != nil) {
+     //       delegate!.myVCDidFinish(self, sample: targetWeightData)
+     //   }
      
     }
     

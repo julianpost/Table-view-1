@@ -89,13 +89,17 @@ class TargetWeightListController: UITableViewController, MyTableVCViewController
     
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
             if segue.identifier == "MySegue" {
-                if let navigationController = segue.destinationViewController as? UINavigationController {
-                    if let viewController = navigationController.topViewController as? MyTableVCTableViewController {
+                
+                    
+              if let viewController = segue.destinationViewController as? MyTableVCTableViewController {
+                    
                         viewController.managedObjectContext = managedObjectContext
-                    }
                 }
                 
-            } else if segue.identifier == "SegueUpdateViewController" {
+                
+            }
+            
+            else if segue.identifier == "SegueUpdateViewController" {
                 if let viewController = segue.destinationViewController as? UpdateViewController {
                     if let indexPath = tableView.indexPathForSelectedRow {
                         // Fetch Record

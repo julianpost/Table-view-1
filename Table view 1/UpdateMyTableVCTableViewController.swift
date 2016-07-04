@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-protocol UpdateViewControllerDelegate {
+/* protocol UpdateViewControllerDelegate {
     func myVCDidFinish(controller: UpdateViewController, sample: TargetWeightData)
-}
+} */
 
 class UpdateViewController: UITableViewController {
     
@@ -19,16 +19,67 @@ class UpdateViewController: UITableViewController {
     var name: NSManagedObject!
     var record: Sample!
     
-    var delegate:UpdateViewControllerDelegate? = nil
+  //  var delegate:UpdateViewControllerDelegate? = nil
     
     var targetWeightData: TargetWeightData = TargetWeightData()
+    
+    
+    @IBOutlet weak var sampleNameField: UITextField!
+    
+    @IBOutlet weak var wetField: UITextField!
+    
+    @IBOutlet weak var dryField: UITextField!
+    
+    @IBOutlet weak var moistureLbl: UILabel!
+    
+    @IBOutlet weak var targetMoistureField: UITextField!
+    
+    @IBOutlet weak var emptyBagField: UITextField!
+    
+    @IBOutlet weak var fullBagField: UITextField!
+    
+    @IBOutlet weak var targetWtLbl: UILabel!
+    
+    
+    @IBAction func updateOnFieldChange(sender: UITextField) {
+        updateCalculations()
+    }
+    
+    func updateCalculations() {
+        let wetWt:Double = Double(wetField.text ?? "0") ?? 0
+        let dryWt:Double = Double(dryField.text ?? "0") ?? 0
+        let moistureContent = Double(round(10 * ((1 - (dryWt / wetWt)) * 100))/10)
+        
+        moistureLbl.text = String(moistureContent) + "%"
+        
+        let emptyBag: Double = Double(emptyBagField.text ?? "0") ?? 0
+        let fullBag: Double = Double(fullBagField.text ?? "0") ?? 0
+        let targetMoisture: Double = Double(targetMoistureField.text ?? "0") ?? 0
+        let targetWt = (fullBag - emptyBag) * ((100 - moistureContent)/(100-targetMoisture)) + emptyBag
+        let targetWtRounded = Double(round(10 * targetWt)/10)
+        
+        
+        if (targetWtRounded < 0) && (fullBag != 0) {
+            targetWtLbl.text = "sure?"
+        }
+        else if targetWtRounded <= 0 {
+            targetWtLbl.text = ""
+        }
+            
+        else {
+            targetWtLbl.text = String(targetWtRounded)
+        }
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
            
         
-            sampleNameField.text = record?.name
+       
+    sampleNameField.text = record.name
         
                 
             
@@ -104,9 +155,9 @@ class UpdateViewController: UITableViewController {
         
         
         
-        if (delegate != nil) {
-            delegate!.myVCDidFinish(self, sample: targetWeightData)
-        }
+   //     if (delegate != nil) {
+    //        delegate!.myVCDidFinish(self, sample: targetWeightData)
+    //    }
      
     }
     
@@ -130,55 +181,6 @@ class UpdateViewController: UITableViewController {
     
     
 
-    @IBOutlet weak var status: UILabel!
-    
-    @IBOutlet weak var sampleNameField: UITextField!
-    
-    @IBOutlet weak var wetField: UITextField!
-    
-    @IBOutlet weak var dryField: UITextField!
-    
-    @IBOutlet weak var moistureLbl: UILabel!
-    
-    @IBOutlet weak var targetMoistureField: UITextField!
-    
-    @IBOutlet weak var emptyBagField: UITextField!
-    
-    @IBOutlet weak var fullBagField: UITextField!
-    
-    @IBOutlet weak var targetWtLbl: UILabel!
-    
-    
-    @IBAction func updateOnFieldChange(sender: UITextField) {
-        updateCalculations()
-    }
-    
-    func updateCalculations() {
-        let wetWt:Double = Double(wetField.text ?? "0") ?? 0
-        let dryWt:Double = Double(dryField.text ?? "0") ?? 0
-        let moistureContent = Double(round(10 * ((1 - (dryWt / wetWt)) * 100))/10)
-        
-        moistureLbl.text = String(moistureContent) + "%"
-        
-        let emptyBag: Double = Double(emptyBagField.text ?? "0") ?? 0
-        let fullBag: Double = Double(fullBagField.text ?? "0") ?? 0
-        let targetMoisture: Double = Double(targetMoistureField.text ?? "0") ?? 0
-        let targetWt = (fullBag - emptyBag) * ((100 - moistureContent)/(100-targetMoisture)) + emptyBag
-        let targetWtRounded = Double(round(10 * targetWt)/10)
-        
-        
-        if (targetWtRounded < 0) && (fullBag != 0) {
-            targetWtLbl.text = "sure?"
-        }
-        else if targetWtRounded <= 0 {
-            targetWtLbl.text = ""
-        }
-            
-        else {
-            targetWtLbl.text = String(targetWtRounded)
-        }
-        
-        
-    }
+   
 
 }
