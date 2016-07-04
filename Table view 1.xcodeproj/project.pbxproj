@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E80ABD621D1C8DFE003C55B2 /* TargetWeightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ABD611D1C8DFE003C55B2 /* TargetWeightData.swift */; };
-		E80ABD671D1CA730003C55B2 /* SampleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ABD661D1CA730003C55B2 /* SampleListController.swift */; };
+		E80ABD671D1CA730003C55B2 /* SampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ABD661D1CA730003C55B2 /* SampleListViewController.swift */; };
 		E80ABD691D1CA89C003C55B2 /* SamplesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80ABD681D1CA89C003C55B2 /* SamplesArray.swift */; };
 		E812BD181D25FE2A00ED5CF3 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812BD171D25FE2A00ED5CF3 /* Sample.swift */; };
 		E818D2611D241B72009867AF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E818D25F1D241B72009867AF /* Model.xcdatamodeld */; };
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		E80ABD611D1C8DFE003C55B2 /* TargetWeightData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetWeightData.swift; sourceTree = "<group>"; };
-		E80ABD661D1CA730003C55B2 /* SampleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleListController.swift; sourceTree = "<group>"; };
+		E80ABD661D1CA730003C55B2 /* SampleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleListViewController.swift; sourceTree = "<group>"; };
 		E80ABD681D1CA89C003C55B2 /* SamplesArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamplesArray.swift; sourceTree = "<group>"; };
 		E812BD171D25FE2A00ED5CF3 /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		E818D2601D241B72009867AF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				E818D25F1D241B72009867AF /* Model.xcdatamodeld */,
 				E859A86B1D297A7600D3778A /* Sample+CoreDataProperties.swift */,
 				E812BD171D25FE2A00ED5CF3 /* Sample.swift */,
-				E80ABD661D1CA730003C55B2 /* SampleListController.swift */,
+				E80ABD661D1CA730003C55B2 /* SampleListViewController.swift */,
 				E8DD3A6E1D1A17B8007CEDA6 /* AddSampleViewController.swift */,
 				E859A86D1D29871900D3778A /* UpdateSampleViewController.swift */,
 				E859A86F1D2AFA0F00D3778A /* SampleDataCell.swift */,
@@ -168,7 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E80ABD671D1CA730003C55B2 /* SampleListController.swift in Sources */,
+				E80ABD671D1CA730003C55B2 /* SampleListViewController.swift in Sources */,
 				E859A86C1D297A7600D3778A /* Sample+CoreDataProperties.swift in Sources */,
 				E8DD3A5D1D1A1738007CEDA6 /* AppDelegate.swift in Sources */,
 				E8DD3A6F1D1A17B8007CEDA6 /* AddSampleViewController.swift in Sources */,

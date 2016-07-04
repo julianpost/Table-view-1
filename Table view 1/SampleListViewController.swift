@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SampleListController: UITableViewController, NSFetchedResultsControllerDelegate {
+class SampleListViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext!
 

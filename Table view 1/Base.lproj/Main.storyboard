@@ -525,10 +525,10 @@
             </objects>
             <point key="canvasLocation" x="2757" y="-7"/>
         </scene>
-        <!--Sample List Controller-->
+        <!--Sample List View Controller-->
         <scene sceneID="x6E-CY-5TJ">
             <objects>
-                <tableViewController id="Ug0-y7-E1A" customClass="SampleListController" customModule="Table_view_1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ug0-y7-E1A" customClass="SampleListViewController" customModule="Table_view_1" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nxx-Vg-drp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -725,14 +725,14 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="2aX-ZN-IrE"/>
-                                                    <exclude reference="US5-6Y-ZRJ"/>
-                                                    <exclude reference="Z38-Ls-77k"/>
-                                                    <exclude reference="upL-Bv-ORI"/>
                                                     <exclude reference="ESR-Sf-Xkg"/>
                                                     <exclude reference="LkO-RU-fyG"/>
                                                     <exclude reference="Nu7-rb-Pgi"/>
-                                                    <exclude reference="qWo-Nh-6f9"/>
+                                                    <exclude reference="US5-6Y-ZRJ"/>
+                                                    <exclude reference="Z38-Ls-77k"/>
                                                     <exclude reference="c7P-SB-ulP"/>
+                                                    <exclude reference="qWo-Nh-6f9"/>
+                                                    <exclude reference="upL-Bv-ORI"/>
                                                     <exclude reference="5nH-fw-6On"/>
                                                 </mask>
                                             </variation>
@@ -797,8 +797,8 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="gH9-Cu-9Yz"/>
-                                                    <exclude reference="vUu-bB-mic"/>
                                                     <exclude reference="n5c-ya-cRj"/>
+                                                    <exclude reference="vUu-bB-mic"/>
                                                     <exclude reference="8j9-Ip-u27"/>
                                                 </mask>
                                             </variation>
@@ -1075,8 +1075,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="VEn-bx-lNB"/>
                                                     <exclude reference="Fkf-qc-5ur"/>
+                                                    <exclude reference="VEn-bx-lNB"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
