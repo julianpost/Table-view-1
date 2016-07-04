@@ -49,7 +49,7 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
         seedPersistentStore()
     }
     
-    func myVCDidFinish(controller: AddSampleViewController, sample: TargetWeightData) {
+   /* func myVCDidFinish(controller: AddSampleViewController, sample: TargetWeightData) {
         
         samplesData.append(sample)
         samples = samplesData
@@ -57,7 +57,8 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
         
         controller.navigationController?.popViewControllerAnimated(true)
         
-        
+        */
+    
     
       /*  let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -84,8 +85,10 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
                 }
         
         
- */
-    }
+ 
+    } 
+     
+     */
     
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
             if segue.identifier == "MySegue" {

@@ -15,11 +15,12 @@ class UpdateSampleViewController: UITableViewController {
     
     var managedObjectContext: NSManagedObjectContext!
     var name: NSManagedObject!
+    //var dryWt: NSManagedObject!
     var record: Sample!
     
   
     
-    var targetWeightData: TargetWeightData = TargetWeightData()
+//    var targetWeightData: TargetWeightData = TargetWeightData()
     
     
     @IBOutlet weak var sampleNameField: UITextField!
@@ -78,6 +79,13 @@ class UpdateSampleViewController: UITableViewController {
         
        
     sampleNameField.text = record.name
+    dryField.text = String(record.dryWt)
+    emptyBagField.text = String(record.emptyBag)
+    fullBagField.text = String(record.fullBag)
+    moistureLbl.text = String(record.moistureContent)
+    targetMoistureField.text = String(record.targetMoisture)
+    targetWtLbl.text = String(record.targetWt)
+    wetField.text = String(record.wetWt)
         
                 
             
@@ -99,10 +107,24 @@ class UpdateSampleViewController: UITableViewController {
       //  samplesData.append(targetWeightData)
         
         let name = sampleNameField.text
+        let dryWt = Double(dryField.text ?? "0") ?? 0
+        let emptyBag = Double(emptyBagField.text ?? "0") ?? 0
+        let fullBag = Double(fullBagField.text ?? "0") ?? 0
+        let moistureContent = Double(moistureLbl.text ?? "0") ?? 0
+        let targetMoisture = Double(targetMoistureField.text ?? "0") ?? 0
+        let targetWt = Double(targetWtLbl.text ?? "0") ?? 0
+        let wetWt = Double(wetField.text ?? "0") ?? 0
 
         if let isEmpty = name?.isEmpty where isEmpty == false {
             // Update Record
             record.setValue(name, forKey: "name")
+            record.setValue(dryWt, forKey: "dryWt")
+            record.setValue(emptyBag, forKey: "emptyBag")
+            record.setValue(fullBag, forKey: "fullBag")
+            record.setValue(moistureContent, forKey: "moistureContent")
+            record.setValue(targetMoisture, forKey: "targetMoisture")
+            record.setValue(targetWt, forKey: "targetWt")
+            record.setValue(wetWt, forKey: "wetWt")
             
             do {
                 // Save Record

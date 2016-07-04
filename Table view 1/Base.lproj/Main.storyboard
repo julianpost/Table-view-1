@@ -52,7 +52,7 @@
                                                         <constraint firstAttribute="width" constant="400" id="BAq-gv-XEM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="BAq-gv-XEM"/>
@@ -533,13 +533,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sYx-IE-J2f">
-                            <rect key="frame" x="0.0" y="136" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TargetDataCell" id="7NI-b3-TfE" customClass="SampleDataCell" customModule="Table_view_1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
@@ -574,9 +567,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="testLabel" destination="sYx-IE-J2f" id="m7e-L6-iLU"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WgN-La-tma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -639,7 +629,7 @@
                                                         <constraint firstAttribute="width" constant="400" id="xFz-L7-NE0"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="xFz-L7-NE0"/>
@@ -680,7 +670,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingDidEnd" id="2iw-o2-HnH"/>
+                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingChanged" id="CbK-6Q-OGo"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(grams)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEm-6m-sVk">
@@ -758,7 +748,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingDidEnd" id="rFg-NZ-XW1"/>
+                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingChanged" id="Y8j-QZ-m2G"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dry weight:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmg-aW-VZb">
@@ -863,7 +853,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     <connections>
-                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingDidEnd" id="8Vj-Vv-OhK"/>
+                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingChanged" id="m7a-xp-2c0"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target moisture:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-yL-JUL">
@@ -923,7 +913,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingDidEnd" id="MBe-5J-1MM"/>
+                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingChanged" id="URz-4t-rB3"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty bag:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQU-Dh-OWb">
@@ -982,7 +972,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingDidEnd" id="NTd-im-XJx"/>
+                                                        <action selector="updateOnFieldChange:" destination="HDn-RU-rfC" eventType="editingChanged" id="pPS-xn-aXI"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full bag:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUj-hj-K2q">
