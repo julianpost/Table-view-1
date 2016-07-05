@@ -82,11 +82,10 @@ class UpdateSampleViewController: UITableViewController {
     dryField.text = String(record.dryWt)
     emptyBagField.text = String(record.emptyBag)
     fullBagField.text = String(record.fullBag)
-    moistureLbl.text = String(record.moistureContent)
     targetMoistureField.text = String(record.targetMoisture)
-    targetWtLbl.text = String(record.targetWt)
     wetField.text = String(record.wetWt)
         
+    updateCalculations()
                 
             
         }
