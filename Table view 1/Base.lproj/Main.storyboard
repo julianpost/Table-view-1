@@ -14,13 +14,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z90-AW-bpG">
-                            <rect key="frame" x="0.0" y="533.5" width="600" height="43"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <sections>
                             <tableViewSection headerTitle="To Calculate Moisture content" id="KLI-EF-5rj">
                                 <cells>
@@ -515,7 +508,6 @@
                         <outlet property="fullBagField" destination="TOg-0C-SOO" id="j6V-oU-HIU"/>
                         <outlet property="moistureLbl" destination="TUX-xS-FOw" id="2Rs-XI-GCt"/>
                         <outlet property="sampleNameField" destination="NBo-kI-wkc" id="C0c-ul-Flk"/>
-                        <outlet property="status" destination="z90-AW-bpG" id="s2q-k1-5Pb"/>
                         <outlet property="targetMoistureField" destination="4Gf-BZ-N2g" id="LAb-bK-Dks"/>
                         <outlet property="targetWtLbl" destination="6WZ-cx-5Ng" id="kui-SH-vrR"/>
                         <outlet property="wetField" destination="fhR-NE-ukg" id="BoO-fS-jQ8"/>

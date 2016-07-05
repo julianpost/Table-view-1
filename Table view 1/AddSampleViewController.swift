@@ -72,7 +72,8 @@ class AddSampleViewController: UITableViewController {
                 try record.managedObjectContext?.save()
                 
                 // Dismiss View Controller
-                dismissViewControllerAnimated(true, completion: nil)
+               /* dismissViewControllerAnimated(true, completion: nil) */
+                navigationController?.popViewControllerAnimated(true)
                 
           
                 }
