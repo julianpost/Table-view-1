@@ -42,7 +42,7 @@ class AddSampleViewController: UITableViewController {
         let dryWt = Double(dryField.text ?? "0") ?? 0
         let emptyBag = Double(emptyBagField.text ?? "0") ?? 0
         let fullBag = Double(fullBagField.text ?? "0") ?? 0
-        let moistureContent = Double(moistureLbl.text ?? "0") ?? 0
+        let dryMatter = Double(moistureLbl.text ?? "0") ?? 0
         let targetMoisture = Double(targetMoistureField.text ?? "0") ?? 0
         let targetWt = Double(targetWtLbl.text ?? "0") ?? 0
         let wetWt = Double(wetField.text ?? "0") ?? 0
@@ -63,7 +63,7 @@ class AddSampleViewController: UITableViewController {
             record.dryWt = dryWt
             record.emptyBag = emptyBag
             record.fullBag = fullBag
-            record.moistureContent = moistureContent
+            record.dryMatter = dryMatter
             record.targetMoisture = targetMoisture
             record.targetWt = targetWt
             record.wetWt = wetWt
@@ -174,14 +174,14 @@ class AddSampleViewController: UITableViewController {
     func updateCalculations() {
         let wetWt:Double = Double(wetField.text ?? "0") ?? 0
         let dryWt:Double = Double(dryField.text ?? "0") ?? 0
-        let moistureContent = Double(round(10 * ((1 - (dryWt / wetWt)) * 100))/10)
+        let dryMatter = Double(round(10 * ((dryWt / wetWt) * 100))/10)
         
-        moistureLbl.text = String(moistureContent) + "%"
+        moistureLbl.text = String(dryMatter) + "%"
         
         let emptyBag: Double = Double(emptyBagField.text ?? "0") ?? 0
         let fullBag: Double = Double(fullBagField.text ?? "0") ?? 0
         let targetMoisture: Double = Double(targetMoistureField.text ?? "0") ?? 0
-        let targetWt = (fullBag - emptyBag) * ((100 - moistureContent)/(100-targetMoisture)) + emptyBag
+        let targetWt = (fullBag - emptyBag) * ((dryMatter)/(100 - targetMoisture)) + emptyBag
         let targetWtRounded = Double(round(10 * targetWt)/10)
         
         
@@ -195,16 +195,16 @@ class AddSampleViewController: UITableViewController {
         else {
             targetWtLbl.text = String(targetWtRounded)
         }
-        
+       /*
         targetWeightData.sampleName = sampleNameField.text
         targetWeightData.wetWt = Double(wetField.text ?? "0")
         targetWeightData.dryWt = Double(dryField.text ?? "0")
-        targetWeightData.moistureContent = Double(moistureLbl.text ?? "0")
+        targetWeightData.dryMatter = Double(moistureLbl.text ?? "0")
         targetWeightData.targetMoisture = Double(targetMoistureField.text ?? "0")
         targetWeightData.emptyBag = Double(emptyBagField.text ?? "0")
         targetWeightData.fullBag = Double(fullBagField.text ?? "0")
         targetWeightData.targetWt = Double(targetWtLbl.text ?? "0")
-        
+        */
     }
 
 }

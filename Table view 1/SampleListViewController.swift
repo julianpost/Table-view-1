@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class SampleListViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class SampleListViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
     var managedObjectContext: NSManagedObjectContext!
 
+    var resultSearchController = UISearchController(searchResultsController: nil)
     
-    
-    var samples:[TargetWeightData] = samplesData
+  //  var samples:[TargetWeightData] = samplesData
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
@@ -36,8 +36,28 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        samples = samplesData
+  //      samples = samplesData
         
+       
+        
+        // Seed Persistent Store
+       // seedPersistentStore()
+        
+        // initialize search controller after the core data
+        self.resultSearchController.searchResultsUpdater = self
+        self.resultSearchController.dimsBackgroundDuringPresentation = false
+        self.resultSearchController.searchBar.sizeToFit()
+        
+        // places the built-in searchbar into the header of the table
+        self.tableView.tableHeaderView = self.resultSearchController.searchBar
+        
+        // makes the searchbar stay in the current screen and not spill into the next screen
+        definesPresentationContext = true
+        
+     // hides the search bar when the view loads
+        tableView.setContentOffset(CGPoint(x: 0, y: resultSearchController.searchBar.frame.size.height), animated: false)
+                
+    
         do {
             try self.fetchedResultsController.performFetch()
         } catch {
@@ -45,10 +65,63 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
             print("\(fetchError), \(fetchError.userInfo)")
         }
         
-        // Seed Persistent Store
-       // seedPersistentStore()
+        }
+    
+    
+    // update the contents of a fetch results controller
+    func fetch(frcToFetch: NSFetchedResultsController) {
+        
+        do {
+            try frcToFetch.performFetch()
+        } catch {
+            return
+        }
     }
     
+    func fetchRequest() -> NSFetchRequest {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Sample")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
+    
+    func getFetchedResultsController() -> NSFetchedResultsController {
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
+    }
+    
+    // updates the table view with the search results as user is typing...
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+        // process the search string, remove leading and trailing spaces
+        let searchText = searchController.searchBar.text!
+        let trimmedSearchString = searchText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        // if search string is not blank
+        if !trimmedSearchString.isEmpty {
+            
+            // form the search format
+            let predicate = NSPredicate(format: "(name contains [cd] %@)", trimmedSearchString)
+            
+            // add the search filter
+            fetchedResultsController.fetchRequest.predicate = predicate
+        }
+        else {
+            
+            // reset to all samples if search string is blank
+            fetchedResultsController = getFetchedResultsController()
+        }
+        
+        // reload the frc
+        fetch(fetchedResultsController)
+        
+        // refresh the table view
+        self.tableView.reloadData()
+    }
+
    /* func myVCDidFinish(controller: AddSampleViewController, sample: TargetWeightData) {
         
         samplesData.append(sample)
@@ -136,9 +209,10 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
 
     }
 
+
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TargetDataCell", forIndexPath: indexPath) as! SampleDataCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SampleDataCell", forIndexPath: indexPath) as! SampleDataCell
         
         // Configure Table View Cell
         configureCell(cell, atIndexPath: indexPath)
@@ -209,6 +283,12 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
             
             // Delete Record
             managedObjectContext.deleteObject(record)
+            
+            // reload the frc
+            fetch(fetchedResultsController)
+            
+            // refresh the table view
+            self.tableView.reloadData()
         }
     }
     /*

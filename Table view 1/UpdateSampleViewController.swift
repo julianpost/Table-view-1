@@ -47,14 +47,14 @@ class UpdateSampleViewController: UITableViewController {
     func updateCalculations() {
         let wetWt:Double = Double(wetField.text ?? "0") ?? 0
         let dryWt:Double = Double(dryField.text ?? "0") ?? 0
-        let moistureContent = Double(round(10 * ((1 - (dryWt / wetWt)) * 100))/10)
+        let dryMatter = Double(round(10 * ((dryWt / wetWt) * 100))/10)
         
-        moistureLbl.text = String(moistureContent) + "%"
+        moistureLbl.text = String(dryMatter) + "%"
         
         let emptyBag: Double = Double(emptyBagField.text ?? "0") ?? 0
         let fullBag: Double = Double(fullBagField.text ?? "0") ?? 0
         let targetMoisture: Double = Double(targetMoistureField.text ?? "0") ?? 0
-        let targetWt = (fullBag - emptyBag) * ((100 - moistureContent)/(100-targetMoisture)) + emptyBag
+        let targetWt = (fullBag - emptyBag) * (dryMatter)/(100-targetMoisture) + emptyBag
         let targetWtRounded = Double(round(10 * targetWt)/10)
         
         
@@ -120,7 +120,7 @@ class UpdateSampleViewController: UITableViewController {
         let dryWt = Double(dryField.text ?? "0") ?? 0
         let emptyBag = Double(emptyBagField.text ?? "0") ?? 0
         let fullBag = Double(fullBagField.text ?? "0") ?? 0
-        let moistureContent = Double(moistureLbl.text ?? "0") ?? 0
+        let dryMatter = Double(moistureLbl.text ?? "0") ?? 0
         let targetMoisture = Double(targetMoistureField.text ?? "0") ?? 0
         let targetWt = Double(targetWtLbl.text ?? "0") ?? 0
         let wetWt = Double(wetField.text ?? "0") ?? 0
@@ -131,7 +131,7 @@ class UpdateSampleViewController: UITableViewController {
             record.setValue(dryWt, forKey: "dryWt")
             record.setValue(emptyBag, forKey: "emptyBag")
             record.setValue(fullBag, forKey: "fullBag")
-            record.setValue(moistureContent, forKey: "moistureContent")
+            record.setValue(dryMatter, forKey: "dryMatter")
             record.setValue(targetMoisture, forKey: "targetMoisture")
             record.setValue(targetWt, forKey: "targetWt")
             record.setValue(wetWt, forKey: "wetWt")

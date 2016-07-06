@@ -18,7 +18,7 @@ extension Sample {
     @NSManaged var dryWt: Double
     @NSManaged var emptyBag: Double
     @NSManaged var fullBag: Double
-    @NSManaged var moistureContent: Double
+    @NSManaged var dryMatter: Double
     @NSManaged var name: String
     @NSManaged var targetMoisture: Double
     @NSManaged var targetWt: Double
