@@ -202,6 +202,15 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
         }
     }
 
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            // Fetch Record
+            let record = fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
+            
+            // Delete Record
+            managedObjectContext.deleteObject(record)
+        }
+    }
     /*
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)

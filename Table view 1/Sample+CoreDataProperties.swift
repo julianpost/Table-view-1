@@ -14,7 +14,7 @@ import CoreData
 
 extension Sample {
 
-    @NSManaged var createdAt: NSTimeInterval
+    @NSManaged var createdAt: NSDate
     @NSManaged var dryWt: Double
     @NSManaged var emptyBag: Double
     @NSManaged var fullBag: Double

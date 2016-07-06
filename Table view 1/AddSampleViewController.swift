@@ -67,7 +67,7 @@ class AddSampleViewController: UITableViewController {
             record.targetMoisture = targetMoisture
             record.targetWt = targetWt
             record.wetWt = wetWt
-            record.createdAt = NSDate().timeIntervalSince1970
+            record.createdAt = NSDate()
             
             
 
