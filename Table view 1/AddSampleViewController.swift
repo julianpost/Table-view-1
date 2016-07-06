@@ -55,7 +55,11 @@ class AddSampleViewController: UITableViewController {
             let record = Sample(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
             
             // Populate Record
-            record.name = name ?? ""
+            
+            if let sampleName = name {
+                record.name = sampleName
+            }
+            
             record.dryWt = dryWt
             record.emptyBag = emptyBag
             record.fullBag = fullBag
@@ -86,6 +90,7 @@ class AddSampleViewController: UITableViewController {
                 showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
             }
             
+            
         }
 
         /*
@@ -115,7 +120,10 @@ class AddSampleViewController: UITableViewController {
          */
         
         
-        
+        else {
+            showAlertWithTitle("Please enter a sample name.", message: "", cancelButtonTitle: "OK")
+            
+        }
    
      
     }

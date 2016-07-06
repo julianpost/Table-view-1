@@ -46,7 +46,7 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
         }
         
         // Seed Persistent Store
-        seedPersistentStore()
+       // seedPersistentStore()
     }
     
    /* func myVCDidFinish(controller: AddSampleViewController, sample: TargetWeightData) {
@@ -231,6 +231,8 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
     
     // MARK: -
     // MARK: Helper Methods
+   
+    
     private func seedPersistentStore() {
         // Create Entity Description
         let entityDescription = NSEntityDescription.entityForName("Sample", inManagedObjectContext: managedObjectContext)
@@ -253,6 +255,7 @@ class SampleListViewController: UITableViewController, NSFetchedResultsControlle
             let saveError = error as NSError
             print("\(saveError), \(saveError.userInfo)")
         }
-    }
+    } 
+     
 
 }
