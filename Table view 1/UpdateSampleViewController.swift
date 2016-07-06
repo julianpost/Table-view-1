@@ -59,7 +59,7 @@ class UpdateSampleViewController: UITableViewController {
         
         
         if (targetWtRounded < 0) && (fullBag != 0) {
-            targetWtLbl.text = "sure?"
+            targetWtLbl.text = "Sure?"
         }
         else if targetWtRounded <= 0 {
             targetWtLbl.text = ""
@@ -79,11 +79,22 @@ class UpdateSampleViewController: UITableViewController {
         
        
     sampleNameField.text = record.name
-    dryField.text = String(record.dryWt)
-    emptyBagField.text = String(record.emptyBag)
-    fullBagField.text = String(record.fullBag)
-    targetMoistureField.text = String(record.targetMoisture)
-    wetField.text = String(record.wetWt)
+        
+    if record.dryWt == 0 { dryField.text = "" }
+    else { dryField.text = String(record.dryWt) }
+    
+    if record.emptyBag == 0 { emptyBagField.text = "" }
+    else { emptyBagField.text = String(record.emptyBag) }
+    
+    if record.fullBag == 0 { fullBagField.text = "" }
+    else { fullBagField.text = String(record.fullBag) }
+        
+    if record.targetMoisture == 0 { targetMoistureField.text = "" }
+    else { targetMoistureField.text = String(record.targetMoisture) }
+        
+    if record.wetWt == 0 { wetField.text = "" }
+    else { wetField.text = String(record.wetWt) }
+        
         
     updateCalculations()
                 
